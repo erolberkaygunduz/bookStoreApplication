@@ -41,7 +41,6 @@ public class BookServiceİmpl implements BookService {
     public Boolean delete(int id) {
         bookRepository.deleteById(id);
         return true;
-
     }
 
     @Override
@@ -75,7 +74,7 @@ public class BookServiceİmpl implements BookService {
     }
 
     @Override
-    public Book getById(int id) {
+    public BookDto getById(int id) {
         Book book = bookRepository.getOne(id);
         return book;
     }
