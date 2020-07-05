@@ -24,7 +24,6 @@ public class Category implements Serializable {
     @Column
     private String kategoriAdi;
 
-
     @OneToMany
     @JoinColumn(name = "book_category_id")
     private List<Book> book;

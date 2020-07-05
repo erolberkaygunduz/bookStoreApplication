@@ -12,18 +12,15 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "BookStore Nesnesi")
-public class BookStoreDto {
-
-    @ApiModelProperty(value = "BookStore nesnesi id alanı.")
+@ApiModel(value = "Category Nesnesi")
+public class CategoryDto {
+    @ApiModelProperty(value = "Category nesnesi id alanı.")
     private int id;
 
-    @ApiModelProperty(value = "BookStore nesnesi kitapciAdı alanı.")
-    private String  kitapciAdi;
+    @ApiModelProperty(value = "Category nesnesi kategoriAdi alanı.")
+    private String  kategoriAdi;
 
-    @ApiModelProperty(value = "BookStore nesnesi sehir alanı.")
-    private String sehir;
 
     @ApiModelProperty(value = "BookStore nesnesi books alanı.")
-    private List<Book> books;
+    private List<Book> book;
 }

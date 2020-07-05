@@ -27,7 +27,7 @@ public class BookStore implements Serializable {
     @Column
     private String sehir;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_bookStore_id")
-    private Book book;
+    private List<Book> book;
 }

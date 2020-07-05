@@ -16,7 +16,7 @@ public interface BookService {
 
     List<BookDto> getAll();
 
-    BookDto getById(int id);
+    Book getById(int id);
 
     Page<BookDto> getAll(Pageable pageable);
 }

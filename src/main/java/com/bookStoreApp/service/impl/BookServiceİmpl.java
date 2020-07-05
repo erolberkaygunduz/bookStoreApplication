@@ -3,7 +3,6 @@ package com.bookStoreApp.service.impl;
 import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.entity.Book;
 import com.bookStoreApp.repo.BookRepository;
-import com.bookStoreApp.repo.CategoryRepository;
 import com.bookStoreApp.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,7 +18,6 @@ import java.util.List;
 public class BookServiceİmpl implements BookService {
 
     private final BookRepository bookRepository;
-    private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
@@ -74,7 +72,7 @@ public class BookServiceİmpl implements BookService {
     }
 
     @Override
-    public BookDto getById(int id) {
+    public Book getById(int id) {
         Book book = bookRepository.getOne(id);
         return book;
     }

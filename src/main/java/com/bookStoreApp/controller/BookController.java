@@ -31,9 +31,9 @@ public class BookController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Id ile Bookları getirme metodu.")
-    public ResponseEntity<BookDto> idIleGetir(@PathVariable("id") int id){
+    public ResponseEntity<BookDto> idIleGetir(@PathVariable("id") int id) {
     BookDto bookDto = bookService.getById(id);
-        return ResponseEntity.ok(bookService.getById(id));
+        return ResponseEntity.ok().body(bookDto);
     }
 
 
