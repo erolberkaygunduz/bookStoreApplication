@@ -19,7 +19,7 @@ public class Category implements Serializable {
     @Id
     @SequenceGenerator(name = "seq_kitap_kategori")
     @GeneratedValue(generator = "seq_kitap_kategori",strategy =GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @Column
     private String kategoriAdi;

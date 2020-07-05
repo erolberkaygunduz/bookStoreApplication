@@ -2,7 +2,6 @@ package com.bookStoreApp.service.impl;
 
 import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.entity.Book;
-import com.bookStoreApp.entity.Category;
 import com.bookStoreApp.repo.BookRepository;
 import com.bookStoreApp.repo.CategoryRepository;
 import com.bookStoreApp.service.BookService;
@@ -11,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +36,27 @@ public class BookServiceİmpl implements BookService {
         return bookDto;
     }
 
+
     @Override
-    public void delete(Long id) {
+    public Boolean delete(int id) {
+        bookRepository.deleteById(id);
+        return true;
 
     }
+
+    @Override
+    public BookDto update(int id, BookDto bookDto) {
+        Book book = new Book();
+        book.setBookName(bookDto.getBookName());
+        book.setPrice(bookDto.getPrice());
+        book.setKategori(bookDto.getCategories());
+        book.setStores(bookDto.getStores());
+        final Book bookDb = bookRepository.save(book);
+        bookDto.setId(bookDb.getId() );
+        return bookDto;
+
+    }
+
 
     @Override
     public List<BookDto> getAll() {
@@ -57,6 +72,12 @@ public class BookServiceİmpl implements BookService {
             bookDtos.add(bookDto);
         });
         return bookDtos;
+    }
+
+    @Override
+    public Book getById(int id) {
+        Book book = bookRepository.getOne(id);
+        return book;
     }
 
     @Override

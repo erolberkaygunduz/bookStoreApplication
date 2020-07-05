@@ -1,5 +1,6 @@
 package com.bookStoreApp.entity;
 
+import com.bookStoreApp.dto.BookDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,11 +15,11 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(of = {"id"})
 @ToString
-public class Book implements Serializable {
+public class Book extends BookDto implements Serializable {
     @Id
     @SequenceGenerator(name = "seq_kitap")
     @GeneratedValue(generator = "seq_kitap",strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @Column
     private String bookName;
@@ -30,10 +31,10 @@ public class Book implements Serializable {
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_category_id")
     private List<Category> kategori;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_bookStore_id")
     private List<BookStore> stores;
+
+
 }

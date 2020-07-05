@@ -13,13 +13,12 @@ import lombok.ToString;
 import java.util.List;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "Book Nesnesi")
 public class BookDto {
     @ApiModelProperty(value = "Book nesnesi Id alanı.")
-    private Long id;
+    private int id;
 
     @ApiModelProperty(value = "Book nesnesi bookName alanı.")
     private String bookName;

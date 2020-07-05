@@ -1,6 +1,7 @@
 package com.bookStoreApp.controller;
 
 import com.bookStoreApp.dto.BookDto;
+import com.bookStoreApp.entity.Book;
 import com.bookStoreApp.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,16 +15,11 @@ import java.util.List;
 @Api(value = "Book Api Dökümantasyonu.")
 public class BookController {
 
+
     private final BookService bookService;
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
-    }
-
-    @PostMapping
-    @ApiOperation(value = "Yeni Book metodu.")
-    public ResponseEntity<BookDto> kaydet(@RequestBody BookDto bookDto){
-        return ResponseEntity.ok(bookService.save(bookDto));
     }
 
     @GetMapping
@@ -32,6 +28,31 @@ public class BookController {
 
         return ResponseEntity.ok(bookService.getAll());
     }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Tüm Bookları getirme metodu.")
+    public ResponseEntity<Book> idIleGetir(@PathVariable("id") int id){
+    Book book = bookService.getById(id);
+        return ResponseEntity.ok(book);
+    }
+
+
+    @PostMapping
+    @ApiOperation(value = "Yeni Book metodu.")
+    public ResponseEntity<BookDto> kaydet(@RequestBody BookDto bookDto){
+        return ResponseEntity.ok(bookService.save(bookDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity guncelle(@PathVariable(value = "id",required = true) int id, @RequestBody BookDto bookDto){
+        return ResponseEntity.ok(bookService.update(id,bookDto));
+
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable(value = "id",required = true) int id){
+        return ResponseEntity.ok(bookService.delete(id));
+    }
+
 
 
 }

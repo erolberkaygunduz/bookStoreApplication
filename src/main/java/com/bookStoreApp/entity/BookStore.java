@@ -19,7 +19,7 @@ public class BookStore implements Serializable {
     @Id
     @SequenceGenerator(name = "seq_kitapci")
     @GeneratedValue(generator = "seq_kitapci",strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @Column
     private String  kitapciAdi;
