@@ -5,17 +5,19 @@ import com.bookStoreApp.entity.Book;
 import com.bookStoreApp.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/book")
-@Api(value = "Book Api Dökümantasyonu.")
+@Api(value = "Book Api Dökümantasyonu.",description = "deneme")
 public class BookController {
 
-
+    @Autowired
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -23,22 +25,19 @@ public class BookController {
     }
 
     @GetMapping
-    @ApiOperation(value = "Tüm Bookları getirme metodu.")
     public ResponseEntity<List<BookDto>> tumunuListele(){
 
         return ResponseEntity.ok(bookService.getAll());
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Id ile Bookları getirme metodu.")
     public ResponseEntity<BookDto> idIleGetir(@PathVariable("id") int id) {
     BookDto bookDto = bookService.getById(id);
-        return ResponseEntity.ok().body(bookDto);
+                    return ResponseEntity.ok(bookService.getById(id));
     }
 
 
     @PostMapping
-    @ApiOperation(value = "Yeni Book metodu.")
     public ResponseEntity<BookDto> kaydet(@RequestBody BookDto bookDto){
         return ResponseEntity.ok(bookService.save(bookDto));
     }

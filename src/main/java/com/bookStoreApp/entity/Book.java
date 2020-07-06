@@ -1,6 +1,8 @@
 package com.bookStoreApp.entity;
 
 import com.bookStoreApp.dto.BookDto;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import lombok.*;
 
 import javax.persistence.*;
