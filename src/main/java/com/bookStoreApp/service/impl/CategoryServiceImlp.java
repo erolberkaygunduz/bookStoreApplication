@@ -1,8 +1,11 @@
 package com.bookStoreApp.service.impl;
 
 
+import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.dto.CategoryDto;
+import com.bookStoreApp.entity.Book;
 import com.bookStoreApp.entity.Category;
+import com.bookStoreApp.repo.BookRepository;
 import com.bookStoreApp.repo.CategoryRepository;
 import com.bookStoreApp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryServiceImlp implements CategoryService {
     private final CategoryRepository categoryRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public CategoryDto save(CategoryDto categoryDto) {
@@ -57,6 +61,23 @@ public class CategoryServiceImlp implements CategoryService {
         });
         return categoryDtos;
     }
+    @Override
+    public List<BookDto> getBooksByCategoryName(String categoryName){
+        List<Book> books = bookRepository.findAll();
+        List<BookDto> bookDtos = new ArrayList<>();
+        for(int i = 0; i < books.size(); i++) {
+            if (books.get(i).getCategories().get(0).getKategoriAdi().equals(categoryName)) {
+                BookDto bookDto = new BookDto();
+                bookDto.setId(books.get(i).getId());
+                bookDto.setBookName(books.get(i).getBookName());
+                bookDto.setPrice(books.get(i).getPrice());
+                bookDto.setStores(books.get(i).getStores());
+                bookDtos.add(bookDto);
+            }
+        }
+        return bookDtos;
+    }
+
 
     @Override
     public CategoryDto getById(int id) {

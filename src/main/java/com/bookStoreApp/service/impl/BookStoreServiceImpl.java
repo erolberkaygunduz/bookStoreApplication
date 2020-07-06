@@ -1,8 +1,11 @@
 package com.bookStoreApp.service.impl;
 
 
+import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.dto.BookStoreDto;
+import com.bookStoreApp.entity.Book;
 import com.bookStoreApp.entity.BookStore;
+import com.bookStoreApp.repo.BookRepository;
 import com.bookStoreApp.repo.BookStoreRepository;
 import com.bookStoreApp.service.BookStoreService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +21,7 @@ import java.util.List;
 public class BookStoreServiceImpl implements BookStoreService {
 
     private final BookStoreRepository bookStoreRepository;
+    private final BookRepository bookRepository;
 
 
     @Override
@@ -28,6 +32,13 @@ public class BookStoreServiceImpl implements BookStoreService {
         final BookStore bookStoreDb = bookStoreRepository.save(bookStore);
         bookStoreDto.setId(bookStoreDb.getId() );
         return bookStoreDto;
+
+    }
+
+    @Override
+    public BookDto saveBookToBookStore(BookDto bookDto) {
+
+        return bookDto;
 
     }
 

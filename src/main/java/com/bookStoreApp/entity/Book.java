@@ -29,11 +29,8 @@ public class Book extends BookDto implements Serializable {
     @Column
     private double price;
 
-    @Column
-    private String categoryName;
-
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Category> kategori;
+    private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<BookStore> stores;

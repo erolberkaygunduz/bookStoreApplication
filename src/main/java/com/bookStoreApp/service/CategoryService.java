@@ -1,6 +1,7 @@
 package com.bookStoreApp.service;
 
 
+import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.dto.CategoryDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,4 +21,6 @@ public interface CategoryService {
     CategoryDto getById(int id);
 
     Page<CategoryDto> getAll(Pageable pageable);
+
+    List<BookDto> getBooksByCategoryName(String categoryName);
 }

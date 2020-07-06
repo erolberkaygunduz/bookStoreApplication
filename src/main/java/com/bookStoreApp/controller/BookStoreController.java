@@ -1,5 +1,6 @@
 package com.bookStoreApp.controller;
 
+import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.dto.BookStoreDto;
 import com.bookStoreApp.service.BookStoreService;
 import io.swagger.annotations.Api;
@@ -29,6 +30,11 @@ public class BookStoreController {
     @PostMapping
     public ResponseEntity<BookStoreDto> kaydet(@RequestBody BookStoreDto bookStoreDto){
         return ResponseEntity.ok(bookStoreService.save(bookStoreDto));
+    }
+
+    @PostMapping(value = "/getDataByCategoryName")
+    public ResponseEntity<BookDto> saveBookToBookStore(@RequestBody BookDto bookDto){
+        return ResponseEntity.ok(bookStoreService.saveBookToBookStore(bookDto));
     }
 
     @PutMapping("/{id}")

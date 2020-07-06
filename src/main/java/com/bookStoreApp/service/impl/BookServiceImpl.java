@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
         Book book = new Book();
         book.setBookName(bookDto.getBookName());
         book.setPrice(bookDto.getPrice());
-        book.setKategori(bookDto.getCategories());
+        book.setCategories(bookDto.getCategories());
         book.setStores(bookDto.getStores());
         final Book bookDb = bookRepository.save(book);
         bookDto.setId(bookDb.getId() );
@@ -51,7 +51,7 @@ public class BookServiceImpl implements BookService {
         Book book = new Book();
         book.setBookName(bookDto.getBookName());
         book.setPrice(bookDto.getPrice());
-        book.setKategori(bookDto.getCategories());
+        book.setCategories(bookDto.getCategories());
         book.setStores(bookDto.getStores());
         final Book bookDb = bookRepository.save(book);
         bookDto.setId(id);
@@ -69,7 +69,7 @@ public class BookServiceImpl implements BookService {
             bookDto.setId(it.getId());
             bookDto.setBookName(it.getBookName());
             bookDto.setPrice(it.getPrice());
-            bookDto.setCategories((it.getKategori()));
+            bookDto.setCategories((it.getCategories()));
             bookDto.setStores(it.getStores());
             bookDtos.add(bookDto);
         });
@@ -83,7 +83,7 @@ public class BookServiceImpl implements BookService {
         bookDto.setId(books.getId());
         bookDto.setBookName(books.getBookName());
         bookDto.setPrice(books.getPrice());
-        bookDto.setCategories((books.getKategori()));
+        bookDto.setCategories((books.getCategories()));
         bookDto.setStores(books.getStores());
         return bookDto;
     }
