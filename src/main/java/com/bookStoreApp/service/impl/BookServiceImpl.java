@@ -2,7 +2,9 @@ package com.bookStoreApp.service.impl;
 
 import com.bookStoreApp.dto.BookDto;
 import com.bookStoreApp.entity.Book;
+import com.bookStoreApp.entity.Category;
 import com.bookStoreApp.repo.BookRepository;
+import com.bookStoreApp.repo.CategoryRepository;
 import com.bookStoreApp.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,12 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
     public BookDto save(BookDto bookDto) {
 
-   //     Assert.isNull(bookDto.getBookName(),"Kitap adi bos birakilamaz.");
         Book book = new Book();
         book.setBookName(bookDto.getBookName());
         book.setPrice(bookDto.getPrice());
@@ -52,7 +54,7 @@ public class BookServiceImpl implements BookService {
         book.setKategori(bookDto.getCategories());
         book.setStores(bookDto.getStores());
         final Book bookDb = bookRepository.save(book);
-        bookDto.setId(bookDb.getId() );
+        bookDto.setId(id);
         return bookDto;
 
     }

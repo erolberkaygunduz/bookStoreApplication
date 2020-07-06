@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/book")
-@Api(value = "Book Api Dökümantasyonu.",description = "deneme")
 public class BookController {
 
     @Autowired

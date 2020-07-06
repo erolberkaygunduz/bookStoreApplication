@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bookStore")
-@Api(value = "BookStore Api Dökümantasyonu.")
 public class BookStoreController {
 
     private final BookStoreService bookStoreService;
@@ -22,14 +21,12 @@ public class BookStoreController {
 
 
     @GetMapping
-    @ApiOperation(value = "Tüm Bookları getirme metodu.")
     public ResponseEntity<List<BookStoreDto>> tumunuListele(){
 
         return ResponseEntity.ok(bookStoreService.getAll());
     }
 
     @PostMapping
-    @ApiOperation(value = "Yeni Book metodu.")
     public ResponseEntity<BookStoreDto> kaydet(@RequestBody BookStoreDto bookStoreDto){
         return ResponseEntity.ok(bookStoreService.save(bookStoreDto));
     }
