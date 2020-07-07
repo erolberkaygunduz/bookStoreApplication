@@ -11,7 +11,7 @@ import java.util.List;
 public interface BookStoreService {
     BookStoreDto save(BookStoreDto bookStoreDto);
 
-    BookDto saveBookToBookStore(BookDto bookDto);
+    List<BookDto> getBooksByStoreName(String storeName);
 
     Boolean delete(int id);
 

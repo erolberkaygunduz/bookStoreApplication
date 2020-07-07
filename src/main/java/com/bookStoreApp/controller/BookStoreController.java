@@ -31,10 +31,9 @@ public class BookStoreController {
     public ResponseEntity<BookStoreDto> kaydet(@RequestBody BookStoreDto bookStoreDto){
         return ResponseEntity.ok(bookStoreService.save(bookStoreDto));
     }
-
-    @PostMapping(value = "/getDataByCategoryName")
-    public ResponseEntity<BookDto> saveBookToBookStore(@RequestBody BookDto bookDto){
-        return ResponseEntity.ok(bookStoreService.saveBookToBookStore(bookDto));
+    @RequestMapping(value = "/getBooksByStoreName",method = RequestMethod.POST)
+    public ResponseEntity<List<BookDto>> getBooksByStore(@RequestParam(value ="storeName") String storeName){
+        return ResponseEntity.ok(bookStoreService.getBooksByStoreName(storeName));
     }
 
     @PutMapping("/{id}")

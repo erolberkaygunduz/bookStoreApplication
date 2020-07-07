@@ -36,11 +36,22 @@ public class BookStoreServiceImpl implements BookStoreService {
     }
 
     @Override
-    public BookDto saveBookToBookStore(BookDto bookDto) {
-
-        return bookDto;
-
+    public List<BookDto> getBooksByStoreName(String storeName) {
+        List<Book> books = bookRepository.findAll();
+        List<BookDto> bookDtos = new ArrayList<>();
+        for(int i = 0; i < books.size(); i++) {
+            if (books.get(i).getStores().get(0).getKitapciAdi().equals(storeName)) {
+                BookDto bookDto = new BookDto();
+                bookDto.setId(books.get(i).getId());
+                bookDto.setBookName(books.get(i).getBookName());
+                bookDto.setPrice(books.get(i).getPrice());
+                bookDto.setStores(books.get(i).getStores());
+                bookDtos.add(bookDto);
+            }
+        }
+        return bookDtos;
     }
+
 
     @Override
     public Boolean delete(int id) {
