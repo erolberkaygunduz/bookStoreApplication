@@ -1,5 +1,6 @@
 package com.bookStoreApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,10 +23,12 @@ public class Category implements Serializable {
     private int id;
 
     @Column
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String kategoriAdi;
 
     @OneToMany
     @JoinColumn(name = "book_category_id")
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Book> book;
 
 

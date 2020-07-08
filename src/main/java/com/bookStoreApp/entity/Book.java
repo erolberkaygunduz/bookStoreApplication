@@ -1,6 +1,7 @@
 package com.bookStoreApp.entity;
 
 import com.bookStoreApp.dto.BookDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import lombok.*;
@@ -29,9 +30,11 @@ public class Book extends BookDto implements Serializable {
     @Column
     private double price;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @OneToMany(cascade = CascadeType.ALL)
     private List<Category> categories;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @OneToMany(cascade = CascadeType.ALL)
     private List<BookStore> stores;
 
